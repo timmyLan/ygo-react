@@ -1,3 +1,3 @@
 # ygo
 
-## create by create-react-app
+## create ygo web by react
