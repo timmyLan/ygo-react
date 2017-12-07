@@ -1,0 +1,190 @@
+/*variable*/
+
+$cartoon-height:98vh;
+$cartoon-width:46vh;
+$cartoon-top:10vh;
+$cartoon-margin:3vh;
+$cartoon-minDevice-margin:-20vh;
+$cartoon-animation-duration:2s;
+$cartoon-animation-delay:.8s;
+$main-color:rgb(255, 255, 204);
+
+
+
+/**
+ * 字体排印效果
+ * @param  {[type]} $color:black 底层阴影颜色
+ * @param  {int} $depth:8     阴影层数
+ * @return {[type]}              阴影参数
+ */
+
+@function text-retro($color:black, $depth:8) {
+    $shadows: (1px 1px $color, );
+    @for $i from 2 through $depth {
+        $shadows: append($shadows,
+        ($i * 1px) ($i * 1px) $color, comma);
+    }
+    @return $shadows;
+}
+
+.background {
+    box-sizing: border-box;
+    background: url('//oymcd876b.bkt.clouddn.com/background.jpg') 0 / cover fixed;
+    background-size: 100% 100%;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    main {
+        opacity: 0;
+        position: relative;
+        padding: 1em;
+        background: rgba(255, 255, 255, .25) border-box;
+        overflow: hidden;
+        border-radius: .3em;
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, .3) inset,
+        0 .5em 1em rgba(0, 0, 0, 0.6);
+        font-size: 20px;
+        color: $main-color;
+        animation: fallDown;
+        animation-duration: 1.5s;
+        animation-delay: 1.5s;
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-fill-mode: forwards;
+        &::before {
+            background: url('//oymcd876b.bkt.clouddn.com/background.jpg') 0 / cover fixed;
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: -30px;
+            z-index: -1;
+            -webkit-filter: blur(20px);
+            filter: blur(20px);
+        }
+        blockquote {
+            text-align: center;
+            font-style: italic;
+            text-shadow: text-retro();
+            transition: 1s;
+            &:hover {
+                text-shadow: 0 0 .1em $main-color, 0 0 .3em $main-color;
+            }
+            cite {
+                font-style: normal;
+            }
+        }
+    }
+    .cartoon-left {
+        animation: fadeLeft;
+        left: $cartoon-margin;
+    }
+    .cartoon-right {
+        animation: fadeRight;
+        right: $cartoon-margin;
+    }
+    .cartoon-left,
+    .cartoon-right {
+        opacity: 0;
+        position: absolute;
+        width: $cartoon-width;
+        height: $cartoon-height;
+        top: $cartoon-top;
+        animation-duration: $cartoon-animation-duration;
+        animation-delay: $cartoon-animation-delay;
+        animation-fill-mode: forwards;
+        transition: 1.5s;
+    }
+    .cartoon-go-up {
+        top: $cartoon-top - 1vh;
+    }
+    .cartoon-go-down {
+        top: $cartoon-top + 1vh;
+    }
+    .cartoon-left.cartoon-go-left {
+        left: $cartoon-margin - 1vh;
+    }
+    .cartoon-left.cartoon-go-right {
+        left: $cartoon-margin + 1vh;
+    }
+    .cartoon-right.cartoon-go-left {
+        right: $cartoon-margin - 1vh;
+    }
+    .cartoon-right.cartoon-go-right {
+        right: $cartoon-margin + 1vh;
+    }
+}
+
+@keyframes fadeLeft {
+    0% {
+        opacity: 0;
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    100% {
+        opacity: .8;
+        transform: none;
+    }
+}
+
+@keyframes fadeRight {
+    0% {
+        opacity: 0;
+        transform: translate3d(100%, 0, 0);
+    }
+
+    100% {
+        opacity: .8;
+        transform: none;
+    }
+}
+
+@keyframes fallDown {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -3000px, 0);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translate3d(0, 25px, 0);
+    }
+
+    75% {
+        transform: translate3d(0, -10px, 0);
+    }
+
+    90% {
+        transform: translate3d(0, 5px, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media screen and(max-device-width:500px) {
+    .background {
+        .cartoon-left {
+            left: $cartoon-minDevice-margin;
+        }
+        .cartoon-right {
+            right: $cartoon-minDevice-margin;
+        }
+        .cartoon-left.cartoon-go-left {
+            left: $cartoon-minDevice-margin - 1vh;
+        }
+        .cartoon-left.cartoon-go-right {
+            left: $cartoon-minDevice-margin + 1vh;
+        }
+        .cartoon-right.cartoon-go-left {
+            right: $cartoon-minDevice-margin - 1vh;
+        }
+        .cartoon-right.cartoon-go-right {
+            right: $cartoon-minDevice-margin + 1vh;
+        }
+    }
+}
