@@ -7,13 +7,58 @@
  * @return {[type]}              阴影参数
  */
 .background {
+  opacity: 0;
   box-sizing: border-box;
   background: url("//oymcd876b.bkt.clouddn.com/background.jpg") 0/cover fixed;
   background-size: 100% 100%;
   height: 100vh;
   width: 100%;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  animation: fadeIn 1s ease-in;
+  animation-fill-mode: forwards; }
+  .background .path {
+    opacity: 0;
+    position: relative;
+    width: 50vh;
+    height: 50vh;
+    margin: 100px auto;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25) border-box;
+    text-align: center;
+    animation: fadeIn;
+    animation-duration: 2s;
+    animation-delay: 3s;
+    animation-fill-mode: forwards; }
+    .background .path::before {
+      background: url("//oymcd876b.bkt.clouddn.com/background.jpg") 0/cover fixed;
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      -webkit-filter: blur(20px);
+      filter: blur(20px); }
+    .background .path h1 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: 0 auto;
+      text-align: center;
+      color: #ffffcc;
+      font-size: 10vh;
+      line-height: 50vh;
+      text-shadow: 0 0 0.1em #ffffcc, 0 0 0.3em #ffffcc; }
+    .background .path .avatar {
+      width: 12vh;
+      margin: 19vh auto 0;
+      border-radius: 50%;
+      overflow: hidden;
+      animation: spin 6s infinite linear; }
   .background main {
     opacity: 0;
     position: relative;
@@ -80,6 +125,12 @@
   .background .cartoon-right.cartoon-go-right {
     right: 4vh; }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
 @keyframes fadeLeft {
   0% {
     opacity: 0;
@@ -110,6 +161,12 @@
   100% {
     opacity: 1;
     transform: none; } }
+
+@keyframes spin {
+  from {
+    transform: rotate(0turn) translateY(-31vh) translateY(50%) rotate(1turn); }
+  to {
+    transform: rotate(1turn) translateY(-31vh) translateY(50%) rotate(0turn); } }
 
 @media screen and (max-device-width: 500px) {
   .background .cartoon-left {

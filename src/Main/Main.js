@@ -36,7 +36,7 @@ class Main extends Component {
                 transitionEnter={true}
                 transitionLeave={false}
                 transitionEnterTimeout={500}>
-                <div className="fadeIn animated background">
+                <div className="background">
                   <main>
                     <blockquote>
                       我明白了，拥有强大力量人的最大的弱点就是力量本身。
@@ -47,6 +47,10 @@ class Main extends Component {
                       </footer>
                     </blockquote>
                   </main>
+                  <div className="path">
+                      <h1>YGO</h1>
+                      <img className="avatar"  src="//oymcd876b.bkt.clouddn.com/Yami.png" alt="Yami"/>
+                  </div>
                   <img
                     onMouseMove = {(e)=>this.handleMouseMove('cartoon-left',e)}
                     onMouseEnter={this.handleHoverOn}
