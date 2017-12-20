@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import './Main.css';
+
+function Path() {
+    return (
+        <div className="path">
+          <h1>YGO</h1>
+          <div className="ball"></div>
+          <div className="ball"></div>
+          <div className="ball"></div>
+          <div className="ball"></div>
+        </div>
+    )
+}
 class Main extends Component {
     constructor(props) {
         super(props);
@@ -47,10 +59,7 @@ class Main extends Component {
                       </footer>
                     </blockquote>
                   </main>
-                  <div className="path">
-                      <h1>YGO</h1>
-                      <img className="avatar"  src="//oymcd876b.bkt.clouddn.com/Yami.png" alt="Yami"/>
-                  </div>
+                  <Path/>
                   <img
                     onMouseMove = {(e)=>this.handleMouseMove('cartoon-left',e)}
                     onMouseEnter={this.handleHoverOn}
