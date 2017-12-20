@@ -23,5 +23,5 @@
     "flow": "flow",
     "eject": "react-scripts eject"
   },
-  "homepage" : "http://timmylan.github.io/ygo-react"
+  "homepage": "http://timmylan.github.io/ygo-react"
 }

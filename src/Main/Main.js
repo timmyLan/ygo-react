@@ -68,7 +68,7 @@ class Main extends Component {
                     className={
                       this.state.isHover?`cartoon-left ${isLeftClassName} ${isTopClassName}`:"cartoon-left"
                     }
-                    src="//oymcd876b.bkt.clouddn.com/cartoon_left.jpg"
+                    src="http://oymcd876b.bkt.clouddn.com/cartoon_left.jpg"
                     alt="cartoon_left"
                   />
                   <img
@@ -78,7 +78,7 @@ class Main extends Component {
                     className={
                       this.state.isHover?`cartoon-right ${isLeftClassName} ${isTopClassName}`:"cartoon-right"
                     }
-                    src="//oymcd876b.bkt.clouddn.com/cartoon_right.jpg"
+                    src="http://oymcd876b.bkt.clouddn.com/cartoon_right.jpg"
                     alt="cartoon_right"
                   />
                 </div>
